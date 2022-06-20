@@ -9,6 +9,7 @@ fun main() {
     val totalSeat = rowSeatNumber * rowNumber
     var currentIncome = 0
     var totalIncome = 0
+    var purchasedTicket = 0
 
     fun showCinemaLayout() {
         println("\nCinema:")
@@ -25,8 +26,6 @@ fun main() {
             print("\n")
         }
     }
-
-    var purchasedTicket = 0
     fun buyTicket() {
         println("\nEnter a row number:")
         val bookRow = readln().toInt()
@@ -60,7 +59,6 @@ fun main() {
             println("\nTicket price: $$ticketPrice \n")
         }
     }
-
     fun showStatistics() {
         if (totalSeat < 60) {
             totalIncome = 10 * totalSeat
@@ -76,16 +74,18 @@ fun main() {
         println("Current income: \$$currentIncome")
         println("Total income: \$$totalIncome")
     }
-
-    var dongu = true
-
-    fun menu() {
+    fun menuText() {
         println("1. Show the seats")
         println("2. Buy a ticket")
         println("3. Statistics")
         println("0. Exit")
+
+    }
+
+    while (true) {
+        menuText()
         when (readln().toInt()) {
-            0 -> dongu = false
+            0 -> break
             1 -> showCinemaLayout()
             2 -> {
                 try {
@@ -96,9 +96,5 @@ fun main() {
             }
             3 -> showStatistics()
         }
-    }
-
-    while (dongu) {
-        menu()
     }
 }
